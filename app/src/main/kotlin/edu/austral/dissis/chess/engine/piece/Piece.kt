@@ -16,6 +16,7 @@ class Piece (
         for(mover in movers) {
             if(mover.validMovement(movement, gameState)) {
                 mover.move(movement, gameState)
+                //TODO ver donde va esto
                 gameState.getMovements().add(movement)
                 return
             }
