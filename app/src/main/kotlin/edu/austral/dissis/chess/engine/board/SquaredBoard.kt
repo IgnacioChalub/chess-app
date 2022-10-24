@@ -44,12 +44,10 @@ class SquaredBoard(private val board: Array<Array<Tile>>) : Board {
 
     override fun getPieces(): List<Piece> {
         val pieces = mutableListOf<Piece>()
-        board.forEach { c ->
-            run {
-                c.forEach { s ->
-                    if (s.hasPiece()) {
-                        pieces.add(s.getPiece())
-                    }
+        for (i in 0 until board.size) {
+            for (j in 0 until board[i].size) {
+                if(board[i][j].hasPiece()) {
+                    pieces.add(board[i][j].getPiece())
                 }
             }
         }

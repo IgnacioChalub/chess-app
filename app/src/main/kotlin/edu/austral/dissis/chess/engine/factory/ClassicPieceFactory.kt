@@ -95,6 +95,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     HorizontalMovementValidator(),
+                    HorizontalClearPathValidator()
                 )
             ),
             ClassicMover(
@@ -102,6 +103,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
+                    VerticalClearPathValidator()
                 )
             ),
             ClassicMover(
@@ -109,6 +111,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
+                    DiagonalClearPathValidator()
                 )
             ),
         ))
