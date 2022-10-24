@@ -3,6 +3,13 @@
  */
 package edu.austral.dissis.chess
 
+import edu.austral.dissis.chess.engine.CustomGameEngine
+import edu.austral.dissis.chess.engine.Game
+import edu.austral.dissis.chess.engine.board.Movement
+import edu.austral.dissis.chess.engine.board.Position
+import edu.austral.dissis.chess.engine.factory.ClassicGameFactory
+import edu.austral.dissis.chess.engine.factory.ClassicPieceFactory
+import edu.austral.dissis.chess.engine.factory.SquaredBoardFactory
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
@@ -14,11 +21,18 @@ import javafx.stage.Stage
 
 
 fun main() {
+//    val classicGameFactory = ClassicGameFactory(SquaredBoardFactory(), ClassicPieceFactory())
+//    val game = classicGameFactory.create()
+//    println(game.getActualBoard().toString())
+//    game.move(Movement(Position(1,1), Position(2, 1)))
+//    println(game.getActualBoard().toString())
+//    game.move(Movement(Position(2,1), Position(4, 1)))
+//    println(game.getActualBoard().toString())
     launch(ChessGameApplication::class.java)
 }
 
 class ChessGameApplication : Application() {
-    private val gameEngine = SimpleGameEngine()
+    private val gameEngine = CustomGameEngine(ClassicGameFactory.createFactory().create())
     private val imageResolver = CachedImageResolver(DefaultImageResolver())
 
     companion object {
