@@ -1,8 +1,8 @@
 package edu.austral.dissis.chess.engine.factory
 
 import edu.austral.dissis.chess.engine.movementValidator.*
+import edu.austral.dissis.chess.engine.mover.CastlingMover
 import edu.austral.dissis.chess.engine.mover.ClassicMover
-import edu.austral.dissis.chess.engine.mover.ShortCastlingMover
 import edu.austral.dissis.chess.engine.piece.Piece
 
 class ClassicPieceFactory {
@@ -13,7 +13,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    DistanceMovementValidator(1),
+                    VerticalDistanceValidator(1),
                     EmptySquareValidator()
                 )
             ),
@@ -22,7 +22,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    DistanceMovementValidator(2),
+                    VerticalDistanceValidator(2),
                     HasMovedValidator(),
                     EmptySquareValidator()
                 )
@@ -32,7 +32,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
-                    DistanceMovementValidator(1),
+                    DiagonalDistanceValidator(1),
                     EatsValidator()
                 )
             ),
@@ -56,16 +56,10 @@ class ClassicPieceFactory {
                 listOf(
                     NotSameTileValidator(),
                     InBoundsValidator(),
+                    SpecialHorseMovementValidator(),
+                    NotSameColorValidator()
                 )
             ),
-            ShortCastlingMover(
-                listOf(
-                    NotSameTileValidator(),
-                    InBoundsValidator(),
-//                    ClearPathMovementValidator(),
-                    HasMovedValidator()
-                )
-            )
         ))
     }
     fun rook(id: String, color: String): Piece {
@@ -123,7 +117,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     HorizontalMovementValidator(),
-                    DistanceMovementValidator(1)
+                    HorizontalDistanceValidator(1)
                 )
             ),
             ClassicMover(
@@ -131,7 +125,7 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    DistanceMovementValidator(1)
+                    VerticalDistanceValidator(1)
                 )
             ),
             ClassicMover(
@@ -139,9 +133,18 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
-                    DistanceMovementValidator(1)
+                    DiagonalDistanceValidator(1)
                 )
             ),
+            CastlingMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    HasMovedValidator(),
+                    HorizontalClearPathValidator(),
+                    CastlingSpecialValidator()
+                )
+            )
         ))
     }
 }

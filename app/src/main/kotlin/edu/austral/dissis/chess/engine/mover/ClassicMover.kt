@@ -5,7 +5,6 @@ import edu.austral.dissis.chess.engine.board.EmptySquare
 import edu.austral.dissis.chess.engine.board.Movement
 import edu.austral.dissis.chess.engine.board.OccupiedSquare
 import edu.austral.dissis.chess.engine.movementValidator.MovementValidator
-import edu.austral.dissis.chess.engine.piece.Piece
 
 class ClassicMover(
     override val validators: List<MovementValidator>,
