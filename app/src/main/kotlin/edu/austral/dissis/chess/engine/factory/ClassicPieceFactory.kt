@@ -3,18 +3,31 @@ package edu.austral.dissis.chess.engine.factory
 import edu.austral.dissis.chess.engine.movementValidator.*
 import edu.austral.dissis.chess.engine.mover.CastlingMover
 import edu.austral.dissis.chess.engine.mover.ClassicMover
+import edu.austral.dissis.chess.engine.mover.CoronationMover
 import edu.austral.dissis.chess.engine.piece.Piece
 
 class ClassicPieceFactory {
-    fun pawn(id: String, color: String): Piece {
+    fun pawn(id: String, color: String, startingSideX: Int): Piece {
         return Piece(id, "PAWN", color, listOf(
+            CoronationMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    VerticalMovementValidator(),
+                    VerticalDistanceValidator(1),
+                    EmptySquareValidator(),
+                    OnlyForwardVerticalValidator(startingSideX),
+                    CoronationSpecialValidator(startingSideX)
+                )
+            ),
             ClassicMover(
                 listOf(
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
                     VerticalDistanceValidator(1),
-                    EmptySquareValidator()
+                    EmptySquareValidator(),
+                    OnlyForwardVerticalValidator(startingSideX)
                 )
             ),
             ClassicMover(
@@ -24,7 +37,8 @@ class ClassicPieceFactory {
                     VerticalMovementValidator(),
                     VerticalDistanceValidator(2),
                     HasMovedValidator(),
-                    EmptySquareValidator()
+                    EmptySquareValidator(),
+                    OnlyForwardVerticalValidator(startingSideX)
                 )
             ),
             ClassicMover(
@@ -33,7 +47,8 @@ class ClassicPieceFactory {
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
                     DiagonalDistanceValidator(1),
-                    EatsValidator()
+                    EatsValidator(),
+                    OnlyForwardVerticalValidator(startingSideX)
                 )
             ),
         ))

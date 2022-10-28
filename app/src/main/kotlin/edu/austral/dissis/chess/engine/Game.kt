@@ -21,7 +21,6 @@ class Game (
     }
 
     fun move(movement: Movement): GameState  {
-        if(gameState.hasFinished()) throw Exception("GAME FINISHED: " + gameState.getWinner() + " wins")
         if(!gameState.getActualBoard().getTile(movement.getFrom()).hasPiece()) throw Exception("Theres no piece")
         if(gameState.getActualBoard().getTile(movement.getFrom()).getPiece().getColor() != getNextPlayerColor()) throw Exception("Not your turn")
 
@@ -29,9 +28,6 @@ class Game (
         pieceToMove.move(movement, gameState)
         gameState.toggleLastColorMovement()
         checkWinner()
-        if(gameState.hasFinished()) {
-            throw Exception("GAME FINISHED: " + gameState.getWinner() + " wins")
-        }
         return gameState
     }
 
@@ -68,6 +64,19 @@ class Game (
                 piece.getId(), if(piece.getColor() == "BLACK"){ PlayerColor.BLACK} else { PlayerColor.WHITE},
                 Pos(gameState.getActualBoard().getPositionFromPiece(piece).getX()+1, gameState.getActualBoard().getPositionFromPiece(piece).getY()+1), piece.getName().lowercase()
             )
+        }
+    }
+
+    fun hasFinished(): Boolean {
+        return gameState.hasFinished()
+    }
+
+    fun getWinner(): PlayerColor {
+        val color = gameState.getWinner()
+        return if(color == "BLACK") {
+            PlayerColor.BLACK
+        }else {
+            PlayerColor.WHITE
         }
     }
 

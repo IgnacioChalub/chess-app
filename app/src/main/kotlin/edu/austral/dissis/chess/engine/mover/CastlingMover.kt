@@ -17,6 +17,8 @@ class CastlingMover(
         gameState.getActualBoard().putAt(movement.getTo(), OccupiedSquare(oldToTile.getColor(), oldFromTile.getPiece()))
         gameState.getActualBoard().putAt(movement.getFrom(), EmptySquare(oldFromTile.getColor()))
 
+        //add king movement
+        gameState.getMovements().add(movement)
 
         if(movement.getFrom().getY() < movement.getTo().getY()) {
 
@@ -24,18 +26,20 @@ class CastlingMover(
             val oldToTileRook = gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), movement.getTo().getY()-1))
 
             gameState.getActualBoard().putAt(Position(movement.getFrom().getX(), movement.getTo().getY()-1), OccupiedSquare(oldToTileRook.getColor(), oldFromTileRook.getPiece()))
-
             gameState.getActualBoard().putAt(Position(movement.getFrom().getX(), movement.getFrom().getY()+3), EmptySquare(oldFromTileRook.getColor()))
 
+            //add rook movement
+            gameState.getMovements().add(Movement(Position(movement.getFrom().getX(), movement.getFrom().getY()+3),Position(movement.getFrom().getX(), movement.getTo().getY()-1) ))
         }else {
 
             val oldFromTileRook = gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), movement.getFrom().getY()-4))
             val oldToTileRook = gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), movement.getTo().getY()+1))
 
             gameState.getActualBoard().putAt(Position(movement.getTo().getX(), movement.getTo().getY()+1), OccupiedSquare(oldToTileRook.getColor(), oldFromTileRook.getPiece()))
-
             gameState.getActualBoard().putAt(Position(movement.getFrom().getX(), movement.getFrom().getY()-4), EmptySquare(oldFromTileRook.getColor()))
 
+            //add rook movement
+            gameState.getMovements().add(Movement(Position(movement.getFrom().getX(), movement.getFrom().getY()-4),Position(movement.getFrom().getX(), movement.getTo().getY()+1)))
         }
     }
 

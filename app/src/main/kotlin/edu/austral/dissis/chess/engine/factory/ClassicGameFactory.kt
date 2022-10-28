@@ -27,8 +27,8 @@ class ClassicGameFactory(
             )
             val board = squaredBoardFactory.create()
             for (i in 0..7) {
-                board.putAt(Position(1,i), OccupiedSquare(board.getTile(Position(1,i)).getColor(), classicPieceFactory.pawn("1$i", "WHITE")))
-                board.putAt(Position(6,i), OccupiedSquare(board.getTile(Position(6,i)).getColor(), classicPieceFactory.pawn("6$i", "BLACK")))
+                board.putAt(Position(1,i), OccupiedSquare(board.getTile(Position(1,i)).getColor(), classicPieceFactory.pawn("1$i", "WHITE", 0)))
+                board.putAt(Position(6,i), OccupiedSquare(board.getTile(Position(6,i)).getColor(), classicPieceFactory.pawn("6$i", "BLACK", 7)))
             }
             board.putAt(Position(0,0), OccupiedSquare(board.getTile(Position(0,0)).getColor(), classicPieceFactory.rook("00", "WHITE")))
             board.putAt(

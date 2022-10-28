@@ -16,7 +16,12 @@ class CustomGameEngine(
                 Position(move.to.row-1, move.to.column-1)
             )
             game.move(movement)
-            NewGameState(game.getChessPieces(),game.getNextPlayer())
+            if(game.hasFinished()){
+                GameOver(game.getWinner())
+            } else {
+                NewGameState(game.getChessPieces(),game.getNextPlayer())
+            }
+
         }catch (e: Exception){
             InvalidMove(e.message!!)
         }
