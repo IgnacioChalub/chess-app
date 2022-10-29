@@ -3,7 +3,6 @@ package edu.austral.dissis.chess.engine
 import edu.austral.dissis.chess.engine.board.Movement
 import edu.austral.dissis.chess.engine.board.Position
 import edu.austral.dissis.chess.gui.*
-import kotlin.contracts.contract
 
 class CustomGameEngine(
     private val game: Game
@@ -21,7 +20,6 @@ class CustomGameEngine(
             } else {
                 NewGameState(game.getChessPieces(),game.getNextPlayer())
             }
-
         }catch (e: Exception){
             InvalidMove(e.message!!)
         }

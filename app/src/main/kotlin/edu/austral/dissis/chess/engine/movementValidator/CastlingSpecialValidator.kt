@@ -5,6 +5,7 @@ import edu.austral.dissis.chess.engine.board.EmptySquare
 import edu.austral.dissis.chess.engine.board.Movement
 import edu.austral.dissis.chess.engine.board.OccupiedSquare
 import edu.austral.dissis.chess.engine.board.Position
+import kotlin.math.abs
 
 class CastlingSpecialValidator : MovementValidator {
 
@@ -14,6 +15,18 @@ class CastlingSpecialValidator : MovementValidator {
             gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), 7)).getPiece().getId()
         }else {
             gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), 0)).getPiece().getId()
+        }
+
+        //checks free space besides rook
+        if(movement.getFrom().getY() <  movement.getTo().getY() && gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), 6)).hasPiece()) {
+            return false
+        }else if (movement.getFrom().getY() >  movement.getTo().getY() && gameState.getActualBoard().getTile(Position(movement.getFrom().getX(), 1)).hasPiece()){
+            return false
+        }
+
+        //checks that king is moving 2 to the left or rithg
+        if(abs( movement.getFrom().getY()-movement.getTo().getY()) != 2) {
+            return false
         }
 
         val initialBoard = gameState.getInitialBoardCopy()

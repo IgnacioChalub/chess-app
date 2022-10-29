@@ -3,7 +3,6 @@ package edu.austral.dissis.chess.engine.piece
 import edu.austral.dissis.chess.engine.GameState
 import edu.austral.dissis.chess.engine.board.Movement
 import edu.austral.dissis.chess.engine.mover.Mover
-import java.lang.Exception
 
 class Piece (
     private val id: String,
@@ -20,6 +19,15 @@ class Piece (
             }
         }
         throw Exception("Invalid move")
+    }
+
+    fun canMove(movement: Movement, gameState: GameState): Boolean {
+        for(mover in movers) {
+            if(mover.validMovement(movement, gameState)) {
+                return true
+            }
+        }
+        return false
     }
 
     fun getId(): String = id

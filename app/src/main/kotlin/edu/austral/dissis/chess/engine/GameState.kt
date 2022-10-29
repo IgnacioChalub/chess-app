@@ -14,6 +14,8 @@ class GameState(
 
     fun getActualBoard(): Board = actualBoard
 
+    fun getActualBoardCopy(): Board = actualBoard.getCopy()
+
     fun getInitialBoardCopy(): Board = initialBoard.getCopy()
 
     fun getMovements(): MutableList<Movement> = movements
@@ -41,5 +43,16 @@ class GameState(
         } else {
             "BLACK"
         }
+    }
+
+    fun getCopy(): GameState {
+        return GameState(
+            movements,
+            initialBoard.getCopy(),
+            actualBoard.getCopy(),
+            hasFinished,
+            winnerColor,
+            lastColorMovement
+        )
     }
 }

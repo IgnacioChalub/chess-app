@@ -9,6 +9,9 @@ interface Board {
     fun betweenLimits(position: Position): Boolean
     fun getCopy(): Board
     fun getPieces(): List<Piece>
+    fun getColorPieces(color: String): List<Piece>
     override fun toString(): String
     fun getPositionFromPiece(piece: Piece): Position
+    fun getRowSize(): Int
+    fun getColSize(): Int
 }

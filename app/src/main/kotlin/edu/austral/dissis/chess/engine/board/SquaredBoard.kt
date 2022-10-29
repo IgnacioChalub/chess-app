@@ -1,8 +1,6 @@
 package edu.austral.dissis.chess.engine.board
 
 import edu.austral.dissis.chess.engine.piece.Piece
-import java.lang.Error
-import java.lang.Exception
 
 class SquaredBoard(private val board: Array<Array<Tile>>) : Board {
 
@@ -53,6 +51,19 @@ class SquaredBoard(private val board: Array<Array<Tile>>) : Board {
         }
         return pieces
     }
+
+    override fun getColorPieces(color: String): List<Piece> {
+        val pieces = mutableListOf<Piece>()
+        for (i in 0 until board.size) {
+            for (j in 0 until board[i].size) {
+                if(board[i][j].hasPiece() && board[i][j].getPiece().getColor() == color) {
+                    pieces.add(board[i][j].getPiece())
+                }
+            }
+        }
+        return pieces
+    }
+
     override fun toString(): String {
         var string = ""
         for (i in 7 downTo 0) {
@@ -73,6 +84,14 @@ class SquaredBoard(private val board: Array<Array<Tile>>) : Board {
            }
        }
        throw Exception("Not found")
+    }
+
+    override fun getRowSize(): Int {
+        return board.size
+    }
+
+    override fun getColSize(): Int {
+        return board[0].size
     }
 
 

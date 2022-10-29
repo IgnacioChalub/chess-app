@@ -17,7 +17,8 @@ class ClassicPieceFactory {
                     VerticalDistanceValidator(1),
                     EmptySquareValidator(),
                     OnlyForwardVerticalValidator(startingSideX),
-                    CoronationSpecialValidator(startingSideX)
+                    CoronationSpecialValidator(startingSideX),
+                    GeneratesCheckValidator()
                 )
             ),
             ClassicMover(
@@ -27,7 +28,8 @@ class ClassicPieceFactory {
                     VerticalMovementValidator(),
                     VerticalDistanceValidator(1),
                     EmptySquareValidator(),
-                    OnlyForwardVerticalValidator(startingSideX)
+                    OnlyForwardVerticalValidator(startingSideX),
+                    GeneratesCheckValidator()
                 )
             ),
             ClassicMover(
@@ -38,7 +40,8 @@ class ClassicPieceFactory {
                     VerticalDistanceValidator(2),
                     HasMovedValidator(),
                     EmptySquareValidator(),
-                    OnlyForwardVerticalValidator(startingSideX)
+                    OnlyForwardVerticalValidator(startingSideX),
+                    GeneratesCheckValidator()
                 )
             ),
             ClassicMover(
@@ -48,7 +51,8 @@ class ClassicPieceFactory {
                     DiagonalMovementValidator(),
                     DiagonalDistanceValidator(1),
                     EatsValidator(),
-                    OnlyForwardVerticalValidator(startingSideX)
+                    OnlyForwardVerticalValidator(startingSideX),
+                    GeneratesCheckValidator()
                 )
             ),
         ))
@@ -60,7 +64,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
-                    DiagonalClearPathValidator()
+                    DiagonalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             )
         ))
@@ -72,7 +78,8 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     SpecialHorseMovementValidator(),
-                    NotSameColorValidator()
+                    NotSameColorValidator(),
+                    GeneratesCheckValidator()
                 )
             ),
         ))
@@ -84,7 +91,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     HorizontalMovementValidator(),
-                    HorizontalClearPathValidator()
+                    HorizontalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             ClassicMover(
@@ -92,7 +101,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    VerticalClearPathValidator()
+                    VerticalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
         ))
@@ -104,7 +115,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     HorizontalMovementValidator(),
-                    HorizontalClearPathValidator()
+                    HorizontalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             ClassicMover(
@@ -112,7 +125,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    VerticalClearPathValidator()
+                    VerticalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             ClassicMover(
@@ -120,7 +135,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
-                    DiagonalClearPathValidator()
+                    DiagonalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
         ))
@@ -132,7 +149,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     HorizontalMovementValidator(),
-                    HorizontalDistanceValidator(1)
+                    HorizontalDistanceValidator(1),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             ClassicMover(
@@ -140,7 +159,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     VerticalMovementValidator(),
-                    VerticalDistanceValidator(1)
+                    VerticalDistanceValidator(1),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             ClassicMover(
@@ -148,7 +169,9 @@ class ClassicPieceFactory {
                     NotSameTileValidator(),
                     InBoundsValidator(),
                     DiagonalMovementValidator(),
-                    DiagonalDistanceValidator(1)
+                    DiagonalDistanceValidator(1),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
                 )
             ),
             CastlingMover(
@@ -157,7 +180,8 @@ class ClassicPieceFactory {
                     InBoundsValidator(),
                     HasMovedValidator(),
                     HorizontalClearPathValidator(),
-                    CastlingSpecialValidator()
+                    HorizontalMovementValidator(),
+                    CastlingSpecialValidator(),
                 )
             )
         ))

@@ -1,8 +1,6 @@
 package edu.austral.dissis.chess.engine.board
 
 import edu.austral.dissis.chess.engine.piece.Piece
-import java.lang.Error
-import java.lang.Exception
 
 class EmptySquare(private val color: String) : Tile {
     override fun hasPiece(): Boolean = false

@@ -1,14 +1,10 @@
 package edu.austral.dissis.chess.engine
 
 import edu.austral.dissis.chess.engine.board.Board
-import edu.austral.dissis.chess.engine.board.EmptySquare
 import edu.austral.dissis.chess.engine.board.Movement
-import edu.austral.dissis.chess.engine.board.OccupiedSquare
 import edu.austral.dissis.chess.engine.finishValidator.FinishValidator
-import edu.austral.dissis.chess.engine.piece.Piece
 import edu.austral.dissis.chess.gui.ChessPiece
 import edu.austral.dissis.chess.gui.PlayerColor
-import java.lang.Exception
 import edu.austral.dissis.chess.gui.Position as Pos
 
 class Game (
