@@ -186,4 +186,64 @@ class ClassicPieceFactory {
             )
         ))
     }
+    fun knightBishop(id: String, color: String): Piece {
+        return Piece(id, "BISHOP", color, listOf(
+            //bishop movers
+            ClassicMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    DiagonalMovementValidator(),
+                    DiagonalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
+                )
+            ),
+            //knight movers
+            ClassicMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    SpecialHorseMovementValidator(),
+                    NotSameColorValidator(),
+                    GeneratesCheckValidator()
+                )
+            ),
+        ));
+    }
+    fun knightRook(id: String, color: String): Piece {
+        return Piece(id, "ROOK", color, listOf(
+            //rook movers
+            ClassicMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    HorizontalMovementValidator(),
+                    HorizontalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
+                )
+            ),
+            ClassicMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    VerticalMovementValidator(),
+                    VerticalClearPathValidator(),
+                    GeneratesCheckValidator(),
+                    NotSameColorValidator()
+                )
+            ),
+            //knight movers
+            ClassicMover(
+                listOf(
+                    NotSameTileValidator(),
+                    InBoundsValidator(),
+                    SpecialHorseMovementValidator(),
+                    NotSameColorValidator(),
+                    GeneratesCheckValidator()
+                )
+            ),
+        ));
+    }
 }

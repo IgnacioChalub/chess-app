@@ -62,19 +62,19 @@ class ClassicGameFactory(
 
             board.putAt(
                 Position(7,0),
-                OccupiedSquare(board.getTile(Position(7,0)).getColor(),  classicPieceFactory.rook("70", "BLACK"))
+                OccupiedSquare(board.getTile(Position(7,0)).getColor(),  classicPieceFactory.knightRook("70", "BLACK"))
             )
             board.putAt(
                 Position(7,7),
-                OccupiedSquare(board.getTile(Position(7,7)).getColor(),  classicPieceFactory.rook("77", "BLACK"))
+                OccupiedSquare(board.getTile(Position(7,7)).getColor(),  classicPieceFactory.knightRook("77", "BLACK"))
             )
             board.putAt(
                 Position(7,2),
-                OccupiedSquare(board.getTile(Position(7,2)).getColor(),  classicPieceFactory.bishop("71", "BLACK"))
+                OccupiedSquare(board.getTile(Position(7,2)).getColor(),  classicPieceFactory.knightBishop("71", "BLACK"))
             )
             board.putAt(
                 Position(7,5),
-                OccupiedSquare(board.getTile(Position(7,5)).getColor(),  classicPieceFactory.bishop("76", "BLACK"))
+                OccupiedSquare(board.getTile(Position(7,5)).getColor(),  classicPieceFactory.knightBishop("76", "BLACK"))
             )
             board.putAt(
                 Position(7,1),
